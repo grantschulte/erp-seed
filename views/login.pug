@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div(class="max-width-2 mr-auto ml-auto")
+    div: h1(class="mt0")= title
+    div
+      form(action="/login" method="post")
+        div.mb2
+          label.mb1 Username
+          input(type="text", name="user[username]", placeholder="Username")
+        div.mb2
+          label.mb1 Password
+          input(type="password", name="user[password]", placeholder="Password")
+        div
+          button(type="submit") Submit

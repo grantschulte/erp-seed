@@ -1,0 +1,23 @@
+doctype html
+html
+  //- - const pageClass = title.toLowerCase();
+  
+  head
+    block title
+      title= `${settings.siteTitle} - ${title}`
+    
+    block style
+      link(rel="stylesheet", href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css")
+      link(rel="stylesheet", href="https://unpkg.com/basscss-colors@2.2.0/css/colors.css")
+      link(rel="stylesheet", href="styles/app.css")
+  
+  body
+    div#site-wrapper
+      include shared/header
+      
+      div#page-wrapper.p2
+        block content
+        include shared/footer
+    
+    block scripts
+      
