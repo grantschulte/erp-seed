@@ -1,7 +1,7 @@
 {
-  "name": "erm-seed",
+  "name": "erp-seed",
   "version": "0.0.1",
-  "description": "An auth seed with Express, Redis, and MongoDB.",
+  "description": "An auth seed with Express, Redis, and Sequelize for Postgres.",
   "main": "server.js",
   "scripts": {
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",

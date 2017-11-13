@@ -1,3 +1,3 @@
-# ERM Seed
+# ERP Seed
 
-An auth seed with Express, Redis, and MongoDB.
+An auth seed with Express, Redis, and Sequelize for Postgres.

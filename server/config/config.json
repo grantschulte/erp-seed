@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "per-seed-dev",
+    "database": "erp-seed-dev",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "per-seed-test",
+    "database": "erp-seed-test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "per-seed-prod",
+    "database": "erp-seed-prod",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
