@@ -1,6 +1,6 @@
 doctype html
 html
-  //- - const pageClass = title.toLowerCase();
+  - const bodyClass = `body-${title.toLowerCase()}`
   
   head
     block title
@@ -11,11 +11,11 @@ html
       link(rel="stylesheet", href="https://unpkg.com/basscss-colors@2.2.0/css/colors.css")
       link(rel="stylesheet", href="styles/app.css")
   
-  body
+  body(class=bodyClass)
     div#site-wrapper
       include header
       
-      div#page-wrapper.p2
+      div#page-wrapper
         block content
         include footer
     

@@ -1,4 +1,3 @@
-
 const testUser = {
   username: "grant",
   password: "password"
