@@ -31,8 +31,13 @@ function auth(req, res, next) {
   }
 }
 
+function register(req, res, next) {
+  res.json(req.body.user);
+}
+
 module.exports = {
   login,
   logout,
-  auth
+  auth,
+  register
 }

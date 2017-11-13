@@ -1,9 +1,10 @@
 header
   div.flex.flex-wrap.items-center.p2
     div.mr-auto
-      a(href="/") ERP Seed
+      a(href="/").blue ERP Seed
     div
       if locals.user
         a(href="/logout").ml2.blue Logout
       else
         a(href="/login").ml2.blue Login
+        a(href="/register").ml2.blue Register
