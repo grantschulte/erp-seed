@@ -1,12 +1,13 @@
 {
   "name": "erp-seed",
   "version": "0.0.1",
-  "description": "An auth seed with Express, Redis, and Sequelize for Postgres.",
+  "description": "A Node web app seed with Express, Redis, and Sequelize for Postgres.",
   "main": "server.js",
   "scripts": {
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "lint": "./node_modules/.bin/eslint ./src/**/*.js",
+    "redis": "redis-server",
     "start": "nodemon ./bin/www",
-    "sequelize": "./node_modules/.bin/sequelize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Grant J. Schulte <schulte.grant@gmail.com>",
@@ -15,6 +16,7 @@
     "body-parser": "1.18.2",
     "connect-redis": "3.3.2",
     "cookie-parser": "1.4.3",
+    "eslint": "4.11.0",
     "express": "4.16.2",
     "express-session": "1.15.6",
     "morgan": "1.9.0",

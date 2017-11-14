@@ -1,3 +1,3 @@
 # ERP Seed
 
-An auth seed with Express, Redis, and Sequelize for Postgres.
+A Node web app seed with Express, Redis, and Sequelize for Postgres.

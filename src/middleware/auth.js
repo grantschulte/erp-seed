@@ -7,5 +7,5 @@ module.exports = () => {
       // User is authorized and so may continue.
       next();
     }
-  }
-}
+  };
+};

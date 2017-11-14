@@ -14,7 +14,7 @@ const auth = require("./middleware/auth");
 
 // Configuration
 
-const staticDir  = path.join(__dirname, "static");
+const staticDir  = path.join(__dirname, "..", "public");
 const viewsDir   = path.join(__dirname, "views");
 const viewEngine = "pug";
 
