@@ -58,6 +58,11 @@ const privateRoutes = require("./routes/private");
 app.use("/", publicRoutes);
 app.use("/", auth(), privateRoutes);
 
+app.get("*", (req, res) => {
+  res.status(200)
+    .send({ message: "Nothing here." });
+});
+
 // Errors
 
 module.exports = app;

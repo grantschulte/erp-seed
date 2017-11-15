@@ -1,5 +1,7 @@
+const User = require("../models").User;
+
 const testUser = {
-  username: "grant",
+  email: "grant",
   password: "password"
 };
 
@@ -31,7 +33,18 @@ function auth(req, res, next) {
 }
 
 function register(req, res, next) {
-  res.json(req.body.user);
+  let { email, password } = req.body.user;
+
+  User.create(req.body.user)
+  .then(user => {
+    console.log("USER CREATED");
+    req.session.user = user.email;
+    res.json(user);
+    // res.redirect("/profile");
+  }).catch(err => {
+    res.json({ err: err.message });
+    console.log("USER CREATE ERROR", err);
+  });
 }
 
 module.exports = {
