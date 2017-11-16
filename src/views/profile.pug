@@ -1,7 +1,31 @@
 extends shared/layout
 
 block content
-  div(class="max-width-4 mr-auto ml-auto")
+  div(class="max-width-2 mr-auto ml-auto")
     div
       h1(class="mt0")= title
-    div= locals.user.email
+      div
+        form(action="/profile" method="post")
+          div.mb2
+            label.mb1 Email
+            input(
+              type="email",
+              disabled="true"
+              placeholder=locals.user.email
+            )
+          div.mb2
+            label.mb1 First Name
+            input(
+              type="text",
+              name="profile[firstName]",
+              value=profile.firstName
+            )
+          div.mb2
+            label.mb1 Last Name
+            input(
+              type="text",
+              name="profile[lastName]",
+              value=profile.lastName
+            )
+          div
+            button(type="submit") Update
