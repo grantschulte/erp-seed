@@ -1,13 +1,16 @@
 const User = require("../models").User;
 
-const testUser = {
-  email: "grant",
-  password: "password"
-};
+/**
+ * login
+ */
 
 function login(req, res) {
   res.render("login", { title: "Login" });
 };
+
+/**
+ * logout
+ */
 
 function logout(req, res, next) {
   req.session.destroy(err => {
@@ -19,32 +22,43 @@ function logout(req, res, next) {
   });
 };
 
-function auth(req, res, next) {
-  let { username, password } = req.body.user;
+/**
+ * auth
+ */
 
-  if (username === testUser.username
-    && password === testUser.password) {
-      req.session.user = username;
-      res.locals.user = username;
-      res.redirect("/profile");
-  } else {
-    res.redirect("back");
-  }
+function auth(req, res, next) {
+  let { email, password } = req.body.user;
+
+  User.findOne({ where: { email: email }})
+    .then(user => {
+      User.comparePassword(password, user.password, err => {
+        if (!err) {
+          req.session.user = User.clean(user);
+          res.redirect("/profile");
+        } else {
+          res.redirect("back");
+        }
+      });
+    })
+    .catch(err => {
+      return next(err);
+    });
 }
+
+/**
+ * register
+ */
 
 function register(req, res, next) {
   let { email, password } = req.body.user;
 
   User.create(req.body.user)
-  .then(user => {
-    console.log("USER CREATED");
-    req.session.user = user.email;
-    res.json(user);
-    // res.redirect("/profile");
-  }).catch(err => {
-    res.json({ err: err.message });
-    console.log("USER CREATE ERROR", err);
-  });
+    .then(user => {
+      req.session.user = User.clean(user);
+      res.redirect("/profile");
+    }).catch(err => {
+      return next(err);
+    });
 }
 
 module.exports = {

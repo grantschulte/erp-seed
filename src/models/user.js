@@ -19,25 +19,50 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate: function(user, options) {
-        return User.generateHash(user.password)
-          .then(hash => {
-            user.password = hash;
-          }).catch(err => {
+        return User.generateHash(user.password, (err, hash) => {
+          if (err) {
             throw new Error("Generate hash error.");
-          });
+          }
+          user.password = hash;
+        });
       },
       beforeUpdate: function(user, done) {
-
+        return User.generateHash(user.password, (err, hash) => {
+          if (err) {
+            throw new Error("Generate hash error.");
+          }
+          user.password = hash;
+        });
       }
     }
   });
 
-  User.generateHash = function(password) {
-    return bcrypt.hash(password, 10);
+  User.generateHash = function(password, cb) {
+    return bcrypt.hash(password, 10)
+      .then(hash => {
+        cb(null, hash);
+      }).catch(err => {
+        cb(err);
+      });
   }
 
-  User.comparePassword = function(password) {
-    return bcrypt.compare(password, this.password);
+  User.comparePassword = function(password, hash, cb) {
+    return bcrypt.compare(password, hash)
+      .then(same => {
+        if (!same) {
+          return cb(new Error("Invalid credentials"));
+        }
+        cb()
+      }).catch(err => {
+        cb(err);
+      });
+  }
+
+  User.clean = function(user) {
+    return {
+      email: user.email,
+      id: user.id
+    }
   }
 
   return User;
