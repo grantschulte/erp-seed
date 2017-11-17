@@ -9,12 +9,13 @@ const session = require("express-session");
 const client = redis.createClient();
 const RedisStore = require("connect-redis")(session);
 const sassMiddleware = require("node-sass-middleware");
+const viewHelpers = require("./middleware/view-helpers");
 const user = require("./middleware/user");
 const auth = require("./middleware/auth");
 
 // Configuration
 
-const staticDir  = path.join(__dirname, "..", "public");
+const publicDir  = path.join(__dirname, "..", "public");
 const viewsDir   = path.join(__dirname, "views");
 const viewEngine = "pug";
 
@@ -42,13 +43,16 @@ app.use(session({
 }));
 app.use(user());
 app.use(sassMiddleware({
-  src: staticDir,
-  dest: staticDir,
+  src: publicDir,
+  dest: publicDir,
   indentedSyntax: false,
   sourceMap: true,
-  outputStyle: 'compressed'
+  outputStyle: "compressed"
 }));
-app.use(express.static(staticDir));
+app.use(express.static(publicDir));
+app.use(viewHelpers({
+  links: true
+}));
 
 // Routes
 

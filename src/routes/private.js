@@ -1,14 +1,13 @@
 const router = require("express").Router();
 const Profile = require("../models").Profile;
 const profileController = require("../controllers").profile;
+const pageTitle = require("../utils").pageTitle;
 
-router.get("/profile", (req, res, next) => {
+router.get("/my-account", (req, res, next) => {
   Profile.findOne({ where: { "userId": req.session.user.id }})
     .then(profile => {
-      console.log("FOUND PROFILE", profile);
-
       res.render("profile", {
-        title: "Profile",
+        title: pageTitle("myAccount"),
         profile
       });
     })
@@ -17,6 +16,6 @@ router.get("/profile", (req, res, next) => {
     });
 });
 
-router.post("/profile", profileController.update);
+router.post("/my-account", profileController.update);
 
 module.exports = router;

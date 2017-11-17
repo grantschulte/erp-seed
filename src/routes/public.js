@@ -1,18 +1,22 @@
 const router = require("express").Router();
 const usersController = require("../controllers").users;
+const pageTitle = require("../utils").pageTitle;
 
 router.get("/", (req, res) => {
-  res.render("home", { title: "Home" });
+  res.render("home", { title: pageTitle("home") });
 });
-
-router.get("/login", usersController.login);
-router.post("/login", usersController.auth);
-
+router.get("/login", (req, res) => {
+  res.render("login", {
+    title: pageTitle("login")
+  });
+});
+router.post("/login", usersController.login);
 router.get("/logout", usersController.logout);
-
-router.get("/register", (req, res) => {
-  res.render("register", { title: "Register" });
+router.get("/signup", (req, res) => {
+  res.render("signup", {
+    title: pageTitle("signup")
+  });
 });
-router.post("/register", usersController.register);
+router.post("/signup", usersController.signup);
 
 module.exports = router;

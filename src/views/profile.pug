@@ -1,31 +1,35 @@
 extends shared/layout
 
 block content
-  div(class="max-width-2 mr-auto ml-auto")
-    div
-      h1(class="mt0")= title
+  div.container
+    div(class="max-width-2 mr-auto ml-auto")
+      div.mb3.pt3
+        h1= title
       div
         form(action="/profile" method="post")
-          div.mb2
-            label.mb1 Email
+          div(class="form-row")
+            label Email
             input(
               type="email",
               disabled="true"
               placeholder=locals.user.email
             )
-          div.mb2
-            label.mb1 First Name
+          div(class="form-row")
+            label First Name
             input(
               type="text",
               name="profile[firstName]",
               value=profile.firstName
             )
-          div.mb2
-            label.mb1 Last Name
+          div(class="form-row")
+            label Last Name
             input(
               type="text",
               name="profile[lastName]",
               value=profile.lastName
             )
-          div
-            button(type="submit") Update
+          div(class="form-row form-row--bottom")
+            button(
+              type="submit",
+              class="btn btn--primary"
+            ) Update

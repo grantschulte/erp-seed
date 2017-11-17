@@ -1,7 +1,10 @@
+@import "variables";
+@import "mixins";
 @import "global";
 @import "containers";
 @import "forms";
 @import "buttons";
+@import "helpers";
 
-@import "header";
-@import "footer";
+@import "./components/header";
+@import "./components/footer";

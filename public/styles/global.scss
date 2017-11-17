@@ -4,14 +4,16 @@
 
 html {
   height: 100%;
+
 }
 
 body {
   padding: 0;
   margin: 0;
   font-size: 14px;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   height: 100%;
+
 }
 
 a {
@@ -21,4 +23,5 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Helvetica, sans-serif;
+  color: map-get($colors-gray, 100);
 }

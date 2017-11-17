@@ -1,11 +1,15 @@
-header
-  div.flex.flex-wrap.items-center.p2
-    div.mr-auto
-      a(href="/").blue= settings.siteTitle
-    div
+header#header
+  div.container
+    div#header__logo
+      a(href=locals.links("home")) Logo
+    div#header__actions
       if locals.user
-        a(href="/logout").ml2.blue Logout
-        a(href="/profile").ml2.blue Profile
+        a(href=locals.links("logout")
+          class="btn btn--primary btn--primary--outlined") Log out
+        a(href=locals.links("myAccount")
+          class="btn btn--primary btn--primary--outlined") My Account
       else
-        a(href="/login").ml2.blue Login
-        a(href="/register").ml2.blue Register
+        a(href=locals.links("login")
+          class="btn btn--primary btn--primary--outlined") Log in
+        a(href=locals.links("signup")
+          class="btn btn--primary") Sign up
