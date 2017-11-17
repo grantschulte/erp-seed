@@ -15,6 +15,7 @@ const auth = require("./middleware/auth");
 
 // Configuration
 
+const srcDir     = __dirname;
 const publicDir  = path.join(__dirname, "..", "public");
 const viewsDir   = path.join(__dirname, "views");
 const viewEngine = "pug";
@@ -43,7 +44,7 @@ app.use(session({
 }));
 app.use(user());
 app.use(sassMiddleware({
-  src: publicDir,
+  src: srcDir,
   dest: publicDir,
   indentedSyntax: false,
   sourceMap: true,

@@ -1,0 +1,15 @@
+/**
+ *
+ * Helpers
+ *
+ */
+
+@each $name, $value in $colors-brand {
+  .color--#{$name} {
+    color: $value;
+  }
+
+  .bg-color--#{$name} {
+    background-color: $value;
+  }
+}
