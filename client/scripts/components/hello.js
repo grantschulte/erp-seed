@@ -1,5 +1,5 @@
-function Hello() {
-  console.log("Hello. This is a client-side javascript component.");
+function greet() {
+  console.log("Hello. This is a regular ole' javascript component.");
 };
 
-export default Hello;
+export default greet;

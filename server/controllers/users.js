@@ -1,7 +1,28 @@
 const User = require("../models").User;
 const pagePath = require("../utils").pagePath;
+const pageTitle = require("../utils").pageTitle;
 
-/**
+/*
+ * show
+ */
+
+function show(req, res) {
+  res.render("login", {
+    title: pageTitle("login")
+  });
+}
+
+/*
+ * signup
+ */
+
+function signup(req, res) {
+  res.render("signup", {
+    title: pageTitle("signup")
+  });
+}
+
+/*
  * login
  */
 
@@ -24,7 +45,7 @@ function login(req, res, next) {
     });
 }
 
-/**
+/*
  * logout
  */
 
@@ -37,11 +58,11 @@ function logout(req, res, next) {
   });
 }
 
-/**
- * signup
+/*
+ * create
  */
 
-function signup(req, res, next) {
+function create(req, res, next) {
   User.create(req.body.user)
     .then(user => {
       req.session.user = User.clean(user);
@@ -52,7 +73,9 @@ function signup(req, res, next) {
 }
 
 module.exports = {
+  create,
   login,
   logout,
+  show,
   signup
 };

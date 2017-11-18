@@ -1,4 +1,18 @@
 const Profile = require("../models").Profile;
+const pageTitle = require("../utils").pageTitle;
+
+function show(req, res, next) {
+  Profile.findOne({ where: { "userId": req.session.user.id }})
+    .then(profile => {
+      res.render("profile", {
+        title: pageTitle("myAccount"),
+        profile
+      });
+    })
+    .catch(err => {
+      return next(err);
+    })
+}
 
 function update(req, res, next) {
   const { firstName, lastName } = req.body.profile;
@@ -23,5 +37,6 @@ function update(req, res, next) {
 }
 
 module.exports = {
-  update
+  update,
+  show
 };
