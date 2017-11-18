@@ -29,7 +29,7 @@ function signup(req, res) {
 function login(req, res, next) {
   let { email, password } = req.body.user;
 
-  User.findOne({ where: { email: email }})
+  User.findOne({ where: { email }})
     .then(user => {
       User.comparePassword(password, user.password, err => {
         if (!err) {

@@ -11,7 +11,7 @@ function show(req, res, next) {
     })
     .catch(err => {
       return next(err);
-    })
+    });
 }
 
 function update(req, res, next) {
