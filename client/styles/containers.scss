@@ -1,0 +1,26 @@
+#site-wrapper {
+  height: 100%;
+}
+
+#page-wrapper {
+  --header-height: $headerHeight;
+  position: relative;
+  min-height: calc(100% - var(--header-height));
+  padding-bottom: 100px;
+}
+
+.container {
+  padding: 0 30px;
+  margin: 0 auto;
+
+  &--vcenter {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: $md) {
+    padding: 0 20px;
+  }
+}

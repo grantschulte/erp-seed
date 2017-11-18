@@ -11,6 +11,7 @@
       "error",
       "unix"
     ],
+    "no-console": 0,
     "quotes": [
       "error",
       "double"
@@ -19,5 +20,8 @@
       "error",
       "always"
     ]
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }

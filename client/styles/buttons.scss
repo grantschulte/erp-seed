@@ -1,0 +1,41 @@
+button,
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  border: 2px solid #222;
+  background-color: $color-white;
+  height: 40px;
+  padding: 0 1.25rem;
+  font-size: 14px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+a.btn {
+  display: inline-block;
+  line-height: 36px;
+  text-decoration: none;
+}
+
+.btn--primary {
+  color: $color-white;
+  border-color: map-get($colors-gray, 100);
+  background-color: map-get($colors-gray, 100);
+
+  &:hover {
+    background-color: darken(map-get($colors-gray, 100), 10%);
+  }
+
+  &--outlined {
+    color: map-get($colors-gray, 100);
+    background-color: $color-white;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+}

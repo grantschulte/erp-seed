@@ -1,0 +1,28 @@
+extends shared/layout
+
+block content
+  div.container
+    div(class="max-width-2 mr-auto ml-auto")
+      div.mb3.pt3
+        h1.mt0= title
+      div
+        form(action="/register" method="post")
+          div(class="form-row")
+            label Email
+            input(
+              type="text",
+              name="user[email]",
+              placeholder="abe@example.com"
+            )
+          div(class="form-row")
+            label Password
+            input(
+              type="password",
+              name="user[password]",
+              placeholder="********"
+            )
+          div(class="form-row form-row--bottom")
+            button(
+              type="submit",
+              class="btn btn--primary"
+            ) Submit

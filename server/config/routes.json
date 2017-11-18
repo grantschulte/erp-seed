@@ -1,0 +1,22 @@
+{
+  "home": {
+    "path": "/",
+    "title": "Home"
+  },
+  "login": {
+    "path": "/login",
+    "title": "Log in"
+  },
+  "logout": {
+    "path": "/logout",
+    "title": "Log out"
+  },
+  "myAccount": {
+    "path": "/my-account",
+    "title": "My Account"
+  },
+  "signup": {
+    "path": "/signup",
+    "title": "Sign up"
+  }
+}

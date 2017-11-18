@@ -1,0 +1,15 @@
+header#header
+  div.container
+    div#header__logo
+      a(href=locals.links("home")) Logo
+    div#header__actions
+      if locals.user
+        a(href=locals.links("logout")
+          class="btn btn--primary btn--primary--outlined") Log out
+        a(href=locals.links("myAccount")
+          class="btn btn--primary btn--primary--outlined") My Account
+      else
+        a(href=locals.links("login")
+          class="btn btn--primary btn--primary--outlined") Log in
+        a(href=locals.links("signup")
+          class="btn btn--primary") Sign up
