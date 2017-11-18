@@ -1,6 +1,15 @@
-node_modules
+# System
+
 .DS_Store
+
+# DB
+
 dump.rdb
+
+# Node
+
+node_modules
+.env
 
 # Build
 

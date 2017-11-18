@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
+}
+
 const express = require("express");
 const app = express();
 const redis = require("redis");
@@ -13,7 +17,7 @@ const viewHelpers = require("./middleware/view-helpers");
 const user = require("./middleware/user");
 const auth = require("./middleware/auth");
 
-// Configuration
+// Settings
 
 const srcDir     = __dirname;
 const publicDir  = path.join(__dirname, "..", "public");
@@ -32,12 +36,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
-  secret: "captainpicard",
+  secret: process.env.SESSION_SECRET,
   store: new RedisStore({
     client,
-    host: "localhost",
-    port: 6379,
-    ttl: 260
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    ttl: process.env.SESSION_LIFETIME
   }),
   saveUninitialized: false,
   resave: false
@@ -62,7 +66,6 @@ const privateRoutes = require("./routes/private");
 
 app.use("/", publicRoutes);
 app.use("/", auth(), privateRoutes);
-
 app.get("*", (req, res) => {
   res.status(200)
     .send({ message: "Nothing here." });
