@@ -60,11 +60,30 @@ const privateRoutes = require("./routes/private");
 app.use("/", publicRoutes);
 app.use("/", auth(), privateRoutes);
 
-app.get("*", (req, res) => {
-  res.status(200)
-    .send({ message: "Nothing here." });
+// Error Handling
+
+app.use((req, res, next) => {
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-// Errors
+if (app.get('env') === 'development') {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
 
 module.exports = app;
