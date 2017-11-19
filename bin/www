@@ -1,4 +1,5 @@
-#!/usr/bin/env nodejs
+#!/usr/bin/env node
+"use strict";
 
 const http = require("http");
 const app  = require("../server/app");
@@ -7,4 +8,6 @@ const port = process.env.PORT || 3000;
 app.set("port", port);
 
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});

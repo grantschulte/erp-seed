@@ -10,14 +10,14 @@ module.exports = (env = defaultEnvironment) => {
       "API_URL": JSON.stringify("http://localhost:3000"),
       "NODE_ENV": JSON.stringify("development")
     },
-    staging: {
-      "API_URL": JSON.stringify("https://api-staging.example.com"),
-      "NODE_ENV": JSON.stringify("staging")
-    },
     production: {
       "API_URL": JSON.stringify("https://api-production.example.com"),
       "NODE_ENV": JSON.stringify("production")
-    }
+    },
+    test: {
+      "API_URL": JSON.stringify("https://api-test.example.com"),
+      "NODE_ENV": JSON.stringify("test")
+    },
   };
 
   return config[env];

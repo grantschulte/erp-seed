@@ -21,6 +21,7 @@ module.exports = (env) => {
     output: {
       path: publicPath,
       filename: "scripts/[name].js",
+      publicPath: "/"
     },
 
     module: {
@@ -105,7 +106,12 @@ module.exports = (env) => {
       })
   	],
 
-    watch: true,
-    devtool: "source-map"
+    devtool: "source-map",
+
+    stats: {
+  		colors: true
+  	},
+
+    watch: (env !== "production")
   };
 };
