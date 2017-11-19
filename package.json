@@ -1,7 +1,7 @@
 {
   "name": "erp-seed",
   "version": "0.0.1",
-  "description": "A Node web app seed with Express, Redis, and Sequelize for Postgres.",
+  "description": "A Node web app seed with Express, Redis, Sequelize, and Webpack.",
   "main": "server.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack --env=production",
